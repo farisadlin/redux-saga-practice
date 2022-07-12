@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getPostDetails } from 'Redux/Store/Posts/Actions';
+import { useParams } from 'react-router-dom';
+import PostDetail from './PostDetail';
 
-const SinglePost = () => {
+function SinglePost () {
+  const params = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPostDetails(params.id));
+  }, [params.id]);
+
   return (
-    <div>SinglePost</div>
+    <div className="single-post">
+      <PostDetail />
+    </div>
   );
-};
-
+}
 export default SinglePost;
