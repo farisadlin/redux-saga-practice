@@ -1,0 +1,11 @@
+.loading-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.loading-wrapper .loading {
+    height: 100px;
+    width: 75px;
+}

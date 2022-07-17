@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Loading from 'Utilities/Loading';
 
 const PostDetail = () => {
   const { post, loadingPostDetails } = useSelector(
@@ -10,9 +11,7 @@ const PostDetail = () => {
     <div>
       {loadingPostDetails
         ? (
-          <div className="loader">
-            <div>Loading ...</div>
-          </div>
+          <Loading />
         )
         : (
           <div className="posts">

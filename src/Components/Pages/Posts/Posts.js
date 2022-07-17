@@ -1,34 +1,19 @@
 /* eslint-disable multiline-ternary */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import 'Styles/posts.css';
+import Loading from 'Utilities/Loading';
+import PostDetail from './PostDetail';
 
 export default function Posts () {
   const { posts, loadingPosts } = useSelector((state) => state.PostReducer);
   return (
-    <div>
+    <div className='posts-container'>
       {loadingPosts ? (
-        <div className="loader">
-          <div>Loading ...</div>
-        </div>
-      ) : (
-        posts.map((item, key) => {
-          return (
-            <div className="posts" key={key}>
-              <div lg={8} md={10} sm={12}>
-                <Link to={`/${item.id}`}>
-                  <div>
-                    <div>
-                      <div>{item.title}</div>
-                      <div>{item.body}</div>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            </div>
-          );
-        })
-      )}
+        <Loading />
+      )
+        : posts.map((item, key) => <PostDetail data={item} key={key} />)
+      }
     </div>
   );
 }
